@@ -1,0 +1,48 @@
+@import '../../styles/colors.scss';
+
+.navbar {
+    width: 100%;
+    
+    .wrapper {
+        width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .navigation-links {
+            list-style-type: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            &__link {
+                padding: 1rem;
+                position: relative;
+
+                &::after {
+                    content: '';
+                    background-color: black;
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    width: 0;
+                    height: 2px;
+                    transition: all 0.2s 
+                }
+
+                &:hover {
+                    &::after {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+
+    @media screen and (max-width: 1250px) {
+        .wrapper {
+            width: 100%;
+        }
+    }
+}
