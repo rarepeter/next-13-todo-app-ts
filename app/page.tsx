@@ -2,7 +2,7 @@ import React from 'react'
 import '../styles/global.css'
 
 const getTodos = async () => {
-  const todos = await fetch('/api/todos')
+  const todos = await fetch('http://localhost:3000/api/todos')
 
   return todos.json()
 }
