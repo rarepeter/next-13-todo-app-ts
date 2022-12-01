@@ -18,8 +18,7 @@ export default userHandler
             }
         })
 
-        console.log(data.email)
-        res.status(200).json({ yes: "yes" })
+        res.status(200).json({ message: "User created." })
         // console.log(1)
         // const userData = req.body
         // const data = await userData.json()
