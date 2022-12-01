@@ -22,6 +22,11 @@ export default function Navbar() {
                             Recently deleted todos
                         </li>
                     </Link>
+                    <Link href="/sign-up">
+                        <li className={styles[`navigation-links__link`]}>
+                            Sign up
+                        </li>
+                    </Link>
                 </ul>
             </div>
         </nav>

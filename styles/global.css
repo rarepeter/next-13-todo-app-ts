@@ -16,4 +16,8 @@ html {
 a {
   text-decoration: none;
   color: inherit;
+}
+
+input {
+  font-family: "Outfit", sans-serif;
 }/*# sourceMappingURL=global.css.map */

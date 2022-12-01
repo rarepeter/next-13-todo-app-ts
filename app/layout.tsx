@@ -1,5 +1,6 @@
 import React, { ReactNode } from 'react'
 import Navbar from '../components/Navbar/Navbar'
+import '../styles/global.css'
 
 interface Props {
     children?: ReactNode
@@ -7,9 +8,11 @@ interface Props {
 
 export default function layout({ children }: Props) {
     return (
-        <>
-            <Navbar />
-            {children}
-        </>
+        <html>
+            <body>
+                <Navbar />
+                {children}
+            </body>
+        </html>
     )
 }
