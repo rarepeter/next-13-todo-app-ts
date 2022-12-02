@@ -19,8 +19,15 @@ export default userHandler
         })
 
         res.status(200).json({ message: "User created." })
-        // console.log(1)
-        // const userData = req.body
-        // const data = await userData.json()
-        1
+    })
+    .get(async (req, res) => {
+        const users = await prisma.user.findMany({
+            select: {
+                id: true,
+                email: true,
+                name: true
+            }
+        })
+
+        res.status(200).json({ message: "User list retrieved", ...users })
     })
