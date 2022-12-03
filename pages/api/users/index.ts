@@ -1,6 +1,6 @@
 // import { NextApiRequest, NextApiResponse } from 'next'
 import { PrismaClient } from '@prisma/client'
-import userHandler from '../../backend/handlers/UserHandler'
+import userHandler from '../../../backend/handlers/UserHandler'
 import bcrypt from 'bcrypt'
 
 const prisma = new PrismaClient()
