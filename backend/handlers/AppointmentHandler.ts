@@ -9,6 +9,7 @@ const appointmentHandler = nc<NextApiRequest, NextApiResponse>({
     onNoMatch: (req, res) => {
         res.status(404).end("Page is not found");
     },
+    attachParams: true
 })
 
 export default appointmentHandler
