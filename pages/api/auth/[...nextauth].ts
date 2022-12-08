@@ -4,6 +4,7 @@ import { PrismaClient } from '@prisma/client'
 import bcrypt from 'bcrypt'
 
 export const authOptions = {
+    secret: process.env.NEXTAUTH_SECRET,
     providers: [
         CredentialsProvider({
             name: "Sign in with credentials",
