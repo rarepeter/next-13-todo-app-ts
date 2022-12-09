@@ -5,10 +5,6 @@ interface initialCredentials {
     password: String
 }
 
-interface credentialsHook {
-
-}
-
 export default function useCredentials() {
     const [credentials, setCredentials] = useState<initialCredentials>({ email: "", password: "" })
 
