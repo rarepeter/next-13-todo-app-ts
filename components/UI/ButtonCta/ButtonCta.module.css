@@ -1,4 +1,7 @@
 .button-cta {
   padding: 0.25rem;
   background-color: #00AFD6;
+}
+.button-cta:hover {
+  cursor: pointer;
 }/*# sourceMappingURL=ButtonCta.module.css.map */

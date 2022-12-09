@@ -3,4 +3,8 @@
 .button-cta {
     padding: 0.25rem;
     background-color: $light-theme-cta;
+    
+    &:hover {
+        cursor: pointer;
+    }
 }
