@@ -1,9 +1,5 @@
+import Credentials from 'types/credentials'
 import { useState } from 'react'
-
-interface Credentials {
-    email: String
-    password: String
-}
 
 export default function useCredentials() {
     const [credentials, setCredentials] = useState<Credentials>({ email: "", password: "" })
@@ -15,5 +11,6 @@ export default function useCredentials() {
     const handleEmailChange = (email: String) => {
         setCredentials(prev => ({ ...prev, email }))
     }
+
     return [credentials, handleEmailChange, handlePasswordChange] as const
 }

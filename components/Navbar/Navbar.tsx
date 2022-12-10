@@ -15,7 +15,7 @@ export default function Navbar({ session }: any) {
                             {item.label}
                         </NavbarLink>
                     ))}
-                    <NavbarSignIn styles={styles} session={session} />
+                    <NavbarSignIn styles={styles} session={session} className={styles[`navigation-links__link`]}/>
                 </ul>
             </div>
         </nav>
