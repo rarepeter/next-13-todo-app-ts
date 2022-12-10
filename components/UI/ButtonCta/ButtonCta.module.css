@@ -1,7 +1,10 @@
 .button-cta {
-  padding: 0.25rem;
+  padding: 0.5rem;
   background-color: #00AFD6;
+  border: none;
+  transition: all 0.2s ease-out;
 }
 .button-cta:hover {
   cursor: pointer;
+  background-color: rgba(0, 175, 214, 0.8);
 }/*# sourceMappingURL=ButtonCta.module.css.map */

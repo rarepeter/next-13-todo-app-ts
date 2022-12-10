@@ -1,4 +1,3 @@
-import { SessionProvider } from 'next-auth/react'
 import Link from 'next/link'
 import React from 'react'
 import NavbarSignIn from '../NavbarSignIn/NavbarSignIn'

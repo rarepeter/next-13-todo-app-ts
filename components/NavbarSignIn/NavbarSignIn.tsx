@@ -6,7 +6,9 @@ import Link from "next/link"
 export default function NavbarSignIn({ session, styles }: any) {
     if (session) {
         return (
-            <li onClick={() => signOut()} className={styles[`navigation-links__link`]}>Sign out</li>
+            <li onClick={() => signOut()} className={styles[`navigation-links__link`]}>
+                Sign out
+            </li>
         )
     }
     return (
