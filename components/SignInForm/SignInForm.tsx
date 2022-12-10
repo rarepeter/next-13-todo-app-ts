@@ -1,8 +1,7 @@
 'use client'
 
-import { signOut } from "next-auth/react"
-import ButtonCta from "../../components/UI/ButtonCta/ButtonCta"
-import InputBox from "../../components/UI/InputBox/InputBox"
+import ButtonCta from "../UI/ButtonCta/ButtonCta"
+import InputBox from "../UI/InputBox/InputBox"
 import useCredentials from "../../hooks/useCredentials/useCredentials"
 import handleSignIn from "../../functions/handleSignIn/handleSignIn"
 

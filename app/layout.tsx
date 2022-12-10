@@ -1,7 +1,6 @@
 import { unstable_getServerSession } from 'next-auth'
-import { getSession } from 'next-auth/react'
 import React, { ReactNode } from 'react'
-import Navbar from '../components/Navbar/Navbar'
+import Navbar from '@components/Navbar/Navbar'
 import '../styles/global.css'
 
 interface Props {

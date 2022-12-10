@@ -1,28 +1,20 @@
-import Link from 'next/link'
+import NavbarLink from '@components/NavbarLink/NavbarLink'
+import navigation from '@data/navigation/navigation'
 import React from 'react'
 import NavbarSignIn from '../NavbarSignIn/NavbarSignIn'
 import styles from './Navbar.module.css'
+
 
 export default function Navbar({ session }: any) {
     return (
         <nav className={styles.navbar}>
             <div className={styles.wrapper}>
                 <ul className={styles[`navigation-links`]}>
-                    <Link href="/">
-                        <li className={styles[`navigation-links__link`]}>
-                            Home
-                        </li>
-                    </Link>
-                    <Link href="/appointments">
-                        <li className={styles[`navigation-links__link`]}>
-                            Appointments
-                        </li>
-                    </Link>
-                    <Link href="/deleted-recently">
-                        <li className={styles[`navigation-links__link`]}>
-                            Recently deleted todos
-                        </li>
-                    </Link>
+                    {navigation.map(item => (
+                        <NavbarLink key={item.href} href={item.href} className={styles[`navigation-links__link`]}>
+                            {item.label}
+                        </NavbarLink>
+                    ))}
                     <NavbarSignIn styles={styles} session={session} />
                 </ul>
             </div>
