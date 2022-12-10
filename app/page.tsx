@@ -6,8 +6,6 @@ import '../styles/global.css'
 
 export default async function page() {
     const session = await unstable_getServerSession()
-    const providers = await getProviders()
-    console.log(providers)
     console.log(session)
     return (
         <div>

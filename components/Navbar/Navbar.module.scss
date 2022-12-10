@@ -19,6 +19,7 @@
             &__link {
                 padding: 1rem;
                 position: relative;
+                cursor: pointer;
 
                 &::after {
                     content: '';

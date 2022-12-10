@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from 'react'
+import { useState } from 'react'
 
 interface Credentials {
     email: String

@@ -17,6 +17,7 @@
 .navbar .wrapper .navigation-links__link {
   padding: 1rem;
   position: relative;
+  cursor: pointer;
 }
 .navbar .wrapper .navigation-links__link::after {
   content: "";
