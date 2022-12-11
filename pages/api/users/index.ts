@@ -6,7 +6,6 @@ import Credentials from 'types/credentials'
 import UserService from 'backend/services/UserService'
 
 const prisma = new PrismaClient()
-console.log(prisma)
 
 export default userHandler
     .post(async (req: NextApiRequest, res: NextApiResponse) => {
