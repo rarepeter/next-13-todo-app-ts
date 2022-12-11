@@ -1,0 +1,18 @@
+.home-page {
+  width: 100%;
+  background-color: #EFEFEF;
+  min-height: 100vh;
+}
+.home-page .wrapper {
+  width: 1200px;
+  margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@media screen and (max-width: 1250px) {
+  .home-page .wrapper {
+    width: 100%;
+  }
+}/*# sourceMappingURL=HomePage.module.css.map */
