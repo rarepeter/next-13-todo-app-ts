@@ -2,32 +2,25 @@ import { PrismaClient, User } from '@prisma/client'
 import userHandler from '../../../backend/handlers/UserHandler'
 import bcrypt from 'bcrypt'
 import { NextApiRequest, NextApiResponse } from 'next'
-import { DUser, UserDto } from 'types/databaseEntities/User'
+import { DUser, NewUserData, UserDto } from 'types/databaseEntities/User'
 import Credentials from 'types/credentials'
+import UserService from 'backend/services/UserService'
 
 const prisma = new PrismaClient()
 
 export default userHandler
     .post(async (req: NextApiRequest, res: NextApiResponse) => {
         try {
-            const newUser: Credentials = JSON.parse(req.body)
-            const { password } = newUser
-            const encryptedPassword: string = await bcrypt.hash(password, 2)
+            const newUserCredentials: Credentials = JSON.parse(req.body)
+            const newUserData: NewUserData = await UserService.create(newUserCredentials)
 
-            const data: DUser = await prisma.user.create({
-                data: {
-                    email: newUser.email,
-                    password: encryptedPassword
-                }
+            const createdUserData: DUser = await prisma.user.create({
+                data: newUserData
             })
 
-            const createdUser: UserDto = {
-                id: data.id,
-                email: data.email,
-                name: data.name
-            }
+            const createdUserDto: UserDto = UserService.createUserDto(createdUserData)
 
-            res.status(200).json({ message: "User created.", createdUser })
+            res.status(200).json({ message: "User created.", createdUserDto })
         } catch (e) {
             res.status(400).json({ message: e })
         }
