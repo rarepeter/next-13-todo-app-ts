@@ -9,14 +9,18 @@ const handleSignUp = async (e: React.FormEvent<HTMLFormElement>, newUserCredenti
     try {
         e.preventDefault()
         const data = await fetch('http://localhost:3000/api/users', { method: "POST", body: JSON.stringify(newUserCredentials) })
+        console.log(data)
+
+        if (data.status === 201) {
+            signIn('credentials', {
+                email: newUserCredentials.email,
+                password: newUserCredentials.password
+            })
+        }
     } catch (error) {
         throw new Error("Error while creating a new user.")
     }
 
-    signIn('credentials', {
-        email: newUserCredentials.email,
-        password: newUserCredentials.password
-    })
 }
 
 export default handleSignUp

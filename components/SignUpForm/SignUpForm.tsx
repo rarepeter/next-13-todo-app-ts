@@ -11,6 +11,8 @@ import handleSignUp from '../../functions/handleSignUp/handleSignUp'
 export default function SignUpForm() {
     const [newUserCredentials, handleEmailChange, handlePasswordChange] = useCredentials()
 
+    console.log(newUserCredentials)
+
     return (
         <>
             <form onSubmit={(e) => handleSignUp(e, newUserCredentials)}>
