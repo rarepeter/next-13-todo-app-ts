@@ -22,13 +22,14 @@ export const authOptions = {
                     select: {
                         id: true,
                         email: true,
+                        name: true,
                         password: true
                     }
                 })
                 if (credentials?.password && user) {
                     const passwordValidation = await bcrypt.compare(credentials.password, user.password)
                     if (passwordValidation) {
-                        return { id: user.id.toString(), email: user.email }
+                        return { id: user.id, name: user.name, email: user.email, image: user.id }
                     }
                 }
                 return null

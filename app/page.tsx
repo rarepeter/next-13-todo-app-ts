@@ -3,8 +3,7 @@ import React from 'react'
 import '@styles/global.css'
 import styles from '@styles/HomePage/HomePage.module.css'
 import SignInAlert from '@components/SignInAlert/SignInAlert'
-import TodoList from '@components/TodoList/TodoList'
-import TodoAddForm from '@components/TodoAddForm/TodoAddForm'
+import Todos from '@components/Todos/Todos'
 
 export default async function HomePage() {
     const session = await unstable_getServerSession()
@@ -16,8 +15,7 @@ export default async function HomePage() {
                 {!session ?
                     <SignInAlert /> :
                     <>
-                        <TodoAddForm />
-                        <TodoList session={session} />
+                        <Todos session={session}/>
                     </>
                 }
             </div>
