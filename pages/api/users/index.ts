@@ -1,4 +1,4 @@
-import { PrismaClient } from '@prisma/client'
+import { PrismaClient, User } from '@prisma/client'
 import userHandler from '../../../backend/handlers/UserHandler'
 import { NextApiRequest, NextApiResponse } from 'next'
 import { DUser, NewUserData, UserDto } from 'types/databaseEntities/User'
@@ -11,9 +11,9 @@ export default userHandler
     .post(async (req: NextApiRequest, res: NextApiResponse) => {
         try {
             const newUserCredentials: Credentials = JSON.parse(req.body)
-            const newUserData: NewUserData = await UserService.create(newUserCredentials)
+            const newUserData: DUser = await UserService.create(newUserCredentials)
 
-            const createdUserData: DUser = await prisma.user.create({
+            const createdUserData = await prisma.user.create({
                 data: newUserData
             })
 
@@ -34,7 +34,7 @@ export default userHandler
                 }
             })
 
-            res.status(200).json({ message: "User list retrieved", ...users })
+            res.status(200).json({ message: "User list retrieved", users: [...users] })
         } catch (e) {
             res.status(400).json({ message: e })
         }

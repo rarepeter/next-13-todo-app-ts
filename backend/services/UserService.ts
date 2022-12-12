@@ -8,6 +8,7 @@ class User {
         const encryptedPassword = await bcrypt.hash(newUserCredentials.password, 2)
 
         const newDatabaseUser = {
+            id: uuidv4(),
             email: newUserCredentials.email,
             name: "NewUser",
             password: encryptedPassword,

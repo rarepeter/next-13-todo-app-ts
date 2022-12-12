@@ -8,40 +8,37 @@ datasource db {
 }
 
 model User {
-  id                   Int                   @id @default(autoincrement())
-  email                String                @unique
-  name                 String?
-  password             String
-  verified             Boolean               @default(false)
-  verificationString   String?
-  todos                Todo[]
-  appointments         Appointment[]
-  recentlyDeletedTodos RecentlyDeletedTodo[]
+  id                 String        @id
+  email              String        @unique
+  name               String?
+  password           String
+  verified           Boolean       @default(false)
+  verificationString String?
+  todos              Todo[]
+  appointments       Appointment[]
 }
 
 model Appointment {
-  id          Int      @id @default(autoincrement())
+  id          String   @id
   createdAt   DateTime @default(now())
   description String?
   date        DateTime
   author      User     @relation(fields: [authorId], references: [id])
-  authorId    Int
+  authorId    String
 }
 
 model Todo {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
+  id        String     @id
+  createdAt DateTime   @default(now())
   title     String
   content   String?
-  author    User     @relation(fields: [authorId], references: [id])
-  authorId  Int
+  status    TodoStatus
+  author    User       @relation(fields: [authorId], references: [id])
+  authorId  String
 }
 
-model RecentlyDeletedTodo {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  title     String
-  content   String?
-  author    User     @relation(fields: [authorId], references: [id])
-  authorId  Int
+enum TodoStatus {
+  NOT_COMPLETED
+  COMPLETED
+  DELETED
 }

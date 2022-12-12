@@ -1,4 +1,5 @@
 interface NewUserData {
+    id: string
     email: string
     name?: string | null
     password: string
@@ -7,7 +8,7 @@ interface NewUserData {
 }
 
 interface DUser {
-    id: Number
+    id: string
     email: string
     name?: string | null
     password: string
@@ -16,7 +17,7 @@ interface DUser {
 }
 
 interface UserDto {
-    id: Number
+    id: string
     email: string
     name?: string | null
 }
