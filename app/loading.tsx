@@ -3,6 +3,6 @@ import '../styles/HomePageLoader/HomePageLoader.css'
 
 export default function HomeLoader() {
   return (
-    <span className='loader'>Loading...</span>
+    <span>Loading...</span>
   )
 }

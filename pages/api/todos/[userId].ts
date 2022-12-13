@@ -2,7 +2,7 @@ import { PrismaClient, Todo } from "@prisma/client";
 import todoHandler from "backend/handlers/TodoHandler";
 import TodoService from "backend/services/TodoService";
 import { NextApiRequest, NextApiResponse } from "next";
-import { CreatedTodo } from "types/databaseEntities/Todo";
+import { CreatedTodo, TodoCreationData } from "types/databaseEntities/Todo";
 
 const prisma = new PrismaClient()
 
@@ -26,7 +26,7 @@ export default todoHandler
     })
     .post(async (req: NextApiRequest, res: NextApiResponse) => {
         const { userId }: any = req.query
-        const { body: todoBody }: TodoCreationDataRequest = req
+        const todoBody: TodoCreationData = JSON.parse(req.body)
 
         const newTodoData: CreatedTodo = TodoService.create(userId, todoBody)
         const createdTodo: Todo = await prisma.todo.create({

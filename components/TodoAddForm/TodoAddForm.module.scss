@@ -1,0 +1,20 @@
+
+
+.todo-add-card {
+    width: 300px;
+    min-height: 400px;
+    background-color: orange;
+    padding: 1rem;
+
+    &__text-area-box {
+        resize: none;
+        overflow: hidden;
+        padding: 0.25rem;
+        width: 100%;
+        background-color: transparent;
+        border: none;
+        border-bottom: 1px solid black;
+        outline: none;
+        height: 2rem;
+    }
+}

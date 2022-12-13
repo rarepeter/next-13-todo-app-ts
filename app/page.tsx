@@ -1,5 +1,5 @@
 import { unstable_getServerSession } from 'next-auth/next'
-import React from 'react'
+import React, { Suspense } from 'react'
 import '@styles/global.css'
 import styles from '@styles/HomePage/HomePage.module.css'
 import SignInAlert from '@components/SignInAlert/SignInAlert'
@@ -15,7 +15,7 @@ export default async function HomePage() {
                 {!session ?
                     <SignInAlert /> :
                     <>
-                        <Todos session={session}/>
+                        <Todos session={session} />
                     </>
                 }
             </div>
