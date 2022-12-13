@@ -5,9 +5,9 @@ interface Credentials {
     password: String
 }
 
-const handleSignIn = (e: React.FormEvent<HTMLFormElement>, credentials: Credentials) => {
+const handleSignIn = async (e: React.FormEvent<HTMLFormElement>, credentials: Credentials) => {
     e.preventDefault()
-    signIn('credentials', {
+    await signIn('credentials', {
         email: credentials.email,
         password: credentials.password
     })

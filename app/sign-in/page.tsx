@@ -1,10 +1,12 @@
 import SignInForm from '@components/SignInForm/SignInForm'
+import { unstable_getServerSession } from 'next-auth'
 import React from 'react'
 
-export default function SignInPage() {
+export default async function SignInPage() {
+  const session = await unstable_getServerSession()
   return (
     <div>
-      <SignInForm />
+      <SignInForm session={session} />
     </div>
   )
 }

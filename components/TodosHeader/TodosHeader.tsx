@@ -7,7 +7,7 @@ import styles from './TodosHeader.module.css'
 
 export default function TodosHeader({ session }: any) {
     const [isOpen, setIsOpen] = useState<boolean>(false)
-    console.log(isOpen)
+    
     return (
         <div className={styles[`todos-header`]}>
             <ButtonCta onClick={() => setIsOpen(true)}>+</ButtonCta>

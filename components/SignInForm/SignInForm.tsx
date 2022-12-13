@@ -5,8 +5,11 @@ import InputBox from "../UI/InputBox/InputBox"
 import useCredentials from "../../hooks/useCredentials/useCredentials"
 import handleSignIn from "../../functions/handleSignIn/handleSignIn"
 
-export default function SignInForm() {
+export default function SignInForm({ session }: any) {
     const [credentials, handleEmailChange, handlePasswordChange] = useCredentials()
+    if (session && typeof window !== "undefined") {
+        window.location.replace('http://localhost:3000')
+    }
 
     return (
         <>

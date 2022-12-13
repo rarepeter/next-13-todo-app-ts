@@ -17,11 +17,11 @@ export default function TodoAddForm({ session }: any) {
     return (
         <div className={styles[`todo-add-card`]}>
             <form onSubmit={e => handleAddTodo(e, userId, todo)}>
-
                 <TextArea
                     onChange={e => handleChangeTodoTitle(e.target.value)}
                     className={styles[`todo-add-card__text-area-box`]}
                     placeholder="Title"
+                    autoFocus
                 />
                 <TextArea
                     onChange={e => handleChangeTodoContent(e.target.value)}
