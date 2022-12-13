@@ -20,7 +20,6 @@ const handleSignUp = async (e: React.FormEvent<HTMLFormElement>, newUserCredenti
     } catch (error) {
         throw new Error("Error while creating a new user.")
     }
-
 }
 
 export default handleSignUp
