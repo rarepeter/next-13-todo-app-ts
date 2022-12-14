@@ -2,13 +2,13 @@
   width: 100%;
   background-color: #EFEFEF;
   min-height: 100vh;
+  padding-top: 2rem;
 }
 .home-page .wrapper {
   width: 1200px;
   margin: 0 auto;
   min-height: 100vh;
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-direction: column;
   gap: 2rem;

@@ -3,9 +3,16 @@ import { v4 as uuidv4 } from 'uuid'
 
 class TodoService {
     create(userId: string, todoBody: TodoCreationData) {
+        let todoTitle
+        if (todoBody.title === "") {
+            todoTitle = "Untitled"
+        } else {
+            todoTitle = todoBody.title
+        }
+
         const newDatabaseTodo = {
             id: uuidv4(),
-            title: todoBody.title,
+            title: todoTitle,
             content: todoBody.content,
             status: "NOT_COMPLETED",
             authorId: userId

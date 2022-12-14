@@ -14,8 +14,8 @@ export default function TodoAddForm({ session, onClose }: any) {
     return (
         <div className={styles[`todo-add-card`]}>
             <svg className={styles[`todo-add-card__close-btn`]} onClick={onClose} viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M13 1L1 13" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                <path d="M1 1L13 13" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M13 1L1 13" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M1 1L13 13" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
 
             <form onSubmit={e => handleAddTodo(e, userId, todo)}>
@@ -30,7 +30,12 @@ export default function TodoAddForm({ session, onClose }: any) {
                     className={styles[`todo-add-card__text-area-box`]}
                     placeholder="Content"
                 />
-                <ButtonCta type="submit">Add todo</ButtonCta>
+                <ButtonCta
+                    className={styles[`todo-add-card__submit-button`]}
+                    type="submit"
+                >
+                    Add todo
+                </ButtonCta>
             </form>
         </div>
     )
