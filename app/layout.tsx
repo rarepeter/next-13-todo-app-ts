@@ -12,6 +12,9 @@ export default async function layout({ children }: Props) {
     const session = await unstable_getServerSession()
     return (
         <html>
+            <head>
+                <title>Peter`s Todo app!</title>
+            </head>
             <body>
                 <Providers>
                     <Navbar session={session} />

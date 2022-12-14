@@ -7,11 +7,12 @@ import styles from './TodosHeader.module.css'
 
 export default function TodosHeader({ session }: any) {
     const [isOpen, setIsOpen] = useState<boolean>(false)
-    
+
     return (
         <div className={styles[`todos-header`]}>
-            <ButtonCta onClick={() => setIsOpen(true)}>+</ButtonCta>
-            {isOpen ? <TodoAddForm session={session} /> : null}
+            {isOpen ?
+                <TodoAddForm session={session} onClose={() => setIsOpen(false)} /> :
+                <ButtonCta onClick={() => setIsOpen(true)}>+</ButtonCta>}
         </div>
     )
 }

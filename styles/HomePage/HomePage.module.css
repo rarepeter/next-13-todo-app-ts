@@ -10,6 +10,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+  gap: 2rem;
 }
 @media screen and (max-width: 1250px) {
   .home-page .wrapper {

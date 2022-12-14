@@ -1,8 +1,17 @@
 .todo-add-card {
   width: 300px;
   min-height: 200px;
-  background-color: orange;
+  background-color: #F8D172;
   padding: 1rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 1px 1px 5px black;
+}
+.todo-add-card__close-btn {
+  height: 1rem;
+  margin: 0 0 0.5rem auto;
+  cursor: pointer;
 }
 .todo-add-card__text-area-box {
   resize: none;
