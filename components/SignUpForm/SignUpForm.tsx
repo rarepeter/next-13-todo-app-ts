@@ -8,10 +8,11 @@ import ButtonCta from '../UI/ButtonCta/ButtonCta'
 import useCredentials from '../../hooks/useCredentials/useCredentials'
 import handleSignUp from '../../functions/handleSignUp/handleSignUp'
 
-export default function SignUpForm() {
+export default function SignUpForm({ session }: any) {
     const [newUserCredentials, handleEmailChange, handlePasswordChange] = useCredentials()
-
-    console.log(newUserCredentials)
+    if (session && typeof window !== "undefined") {
+        window.location.replace('http://localhost:3000')
+    }
 
     return (
         <>

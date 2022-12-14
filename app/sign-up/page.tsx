@@ -1,10 +1,12 @@
 import React from 'react'
 import SignUpForm from '@components/SignUpForm/SignUpForm'
+import { unstable_getServerSession } from 'next-auth'
 
-export default function SignUpPage() {
+export default async function SignUpPage() {
+  const session = await unstable_getServerSession()
   return (
     <section>
-      <SignUpForm />
+      <SignUpForm session={session} />
     </section>
   )
 }
