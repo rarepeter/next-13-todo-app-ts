@@ -1,29 +1,27 @@
 @-webkit-keyframes appear {
   0% {
-    height: 0;
-    min-height: auto;
+    max-height: 0;
   }
   100% {
-    height: 200px;
-    min-height: 200px;
+    max-height: 1000px;
   }
 }
 @keyframes appear {
   0% {
-    height: 0;
-    min-height: auto;
+    max-height: 0;
   }
   100% {
-    height: 200px;
-    min-height: 200px;
+    max-height: 1000px;
   }
 }
 @-webkit-keyframes childrenAppear {
   0% {
     opacity: 0;
+    display: none;
   }
-  95% {
+  60% {
     opacity: 0;
+    display: block;
   }
   100% {
     opacity: 1;
@@ -32,9 +30,11 @@
 @keyframes childrenAppear {
   0% {
     opacity: 0;
+    display: none;
   }
-  95% {
+  60% {
     opacity: 0;
+    display: block;
   }
   100% {
     opacity: 1;
@@ -42,22 +42,21 @@
 }
 .todo-add-card {
   width: 300px;
-  min-height: 200px;
   background-color: #F8D172;
   padding: 1rem;
   display: flex;
   align-items: center;
   flex-direction: column;
   box-shadow: 1px 1px 5px black;
-  -webkit-animation: appear 5s ease-out;
-          animation: appear 5s ease-out;
+  -webkit-animation: appear 0.5s ease-out;
+          animation: appear 0.5s ease-out;
 }
 .todo-add-card__close-btn {
   height: 1rem;
   margin: 0 0 0.5rem auto;
   cursor: pointer;
-  -webkit-animation: childrenAppear 5s ease-out;
-          animation: childrenAppear 5s ease-out;
+  -webkit-animation: childrenAppear 0.5s ease-out;
+          animation: childrenAppear 0.5s ease-out;
 }
 .todo-add-card__text-area-box {
   resize: none;
@@ -69,11 +68,13 @@
   border-bottom: 1px solid black;
   outline: none;
   height: 2rem;
-  -webkit-animation: childrenAppear 5s ease-out;
-          animation: childrenAppear 5s ease-out;
+  -webkit-animation: childrenAppear 0.5s ease-out;
+          animation: childrenAppear 0.5s ease-out;
 }
 .todo-add-card__submit-button {
   padding: 0.5rem;
   background-color: #00AFD6;
   border: 0;
+  -webkit-animation: childrenAppear 0.5s ease-out;
+          animation: childrenAppear 0.5s ease-out;
 }/*# sourceMappingURL=TodoAddForm.module.css.map */
