@@ -1,3 +1,12 @@
+interface DTodo {
+    id: string
+    createdAt: Date
+    title: string
+    content: string
+    status: string
+    authorId: string
+}
+
 interface CreatedTodo {
     id: string
     title: string
@@ -17,4 +26,4 @@ enum TodoStatus {
     "DELETED"
 }
 
-export type { CreatedTodo, TodoCreationData }
+export type { CreatedTodo, TodoCreationData, DTodo}

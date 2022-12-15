@@ -1,0 +1,38 @@
+@import '../../styles/colors.scss';
+
+.todo-list-wrapper {
+    // margin: 0 auto;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    color: $light-theme-text-color;
+
+    .todo-card {
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        flex-direction: column;
+        background-color: $todo-card-color;
+        padding: 1rem;
+        min-width: 300px;
+        max-width: 400px;
+        min-height: 150px;
+        box-shadow: 2px 2px 6px black;
+        color: inherit;
+
+        &__title {
+            font-size: 1.5rem;
+            color: inherit;
+            margin-bottom: 0.5rem;
+        }
+
+        &__date-created {
+            margin-top: auto;
+            color: inherit;
+            opacity: 0.6;
+        }
+    }
+}

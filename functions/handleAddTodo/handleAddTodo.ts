@@ -7,6 +7,11 @@ const handleAddTodo = async (e: React.FormEvent<HTMLFormElement>, userId: string
             throw new Error("Can not add empty todo!")
         }
         const data = await fetch(`http://localhost:3000/api/todos/${userId}`, { method: "POST", body: JSON.stringify(todoBody) })
+        if (data) {
+            window.location.reload()
+        } else {
+            throw new Error("There was an error when creating todo.")
+        }
         console.log(data)
     } catch (err) {
         console.log(err)

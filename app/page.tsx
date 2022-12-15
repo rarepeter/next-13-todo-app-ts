@@ -13,9 +13,7 @@ export default async function HomePage() {
             <div className={styles[`wrapper`]}>
                 {!session ?
                     <SignInAlert /> :
-                    <>
-                        <Todos session={session} />
-                    </>
+                    <Todos session={session} />
                 }
             </div>
         </section>

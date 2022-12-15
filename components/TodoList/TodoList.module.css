@@ -1,1 +1,32 @@
-/*# sourceMappingURL=TodoList.module.css.map */
+.todo-list-wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  color: #494949;
+}
+.todo-list-wrapper .todo-card {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  background-color: #F8D172;
+  padding: 1rem;
+  min-width: 300px;
+  max-width: 400px;
+  min-height: 150px;
+  box-shadow: 2px 2px 6px black;
+  color: inherit;
+}
+.todo-list-wrapper .todo-card__title {
+  font-size: 1.5rem;
+  color: inherit;
+  margin-bottom: 0.5rem;
+}
+.todo-list-wrapper .todo-card__date-created {
+  margin-top: auto;
+  color: inherit;
+  opacity: 0.6;
+}/*# sourceMappingURL=TodoList.module.css.map */

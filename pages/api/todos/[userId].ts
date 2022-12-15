@@ -19,6 +19,9 @@ export default todoHandler
         const fetchedUserTodos: Todo[] = await prisma.todo.findMany({
             where: {
                 authorId: userId
+            },
+            orderBy: {
+                createdAt: 'desc'
             }
         })
         res.status(200).json({ message: "Todos have been fetched!", fetchedUserTodos: [...fetchedUserTodos] })
