@@ -1,11 +1,10 @@
 import TodosHeader from '@components/TodosHeader/TodosHeader'
 import TodoList from '@components/TodoList/TodoList'
-import React, { ReactElement } from 'react'
+import React from 'react'
 
 function asyncServerComponent<T, R>(fn: (arg: T) => Promise<R>): (arg: T) => R {
     return fn as (arg: T) => R;
 }
-
 
 export default asyncServerComponent(async function Todos({ session }: any) {
     // const { image: userId } = session.user
