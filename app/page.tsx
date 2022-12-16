@@ -7,7 +7,7 @@ import Todos from '@components/Todos/Todos'
 
 export default async function HomePage() {
     const session = await unstable_getServerSession()
-
+    console.log(session)
     return (
         <section className={styles[`home-page`]}>
             <div className={styles[`wrapper`]}>
