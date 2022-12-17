@@ -4,7 +4,6 @@ import ButtonCta from "../UI/ButtonCta/ButtonCta"
 import InputBox from "../UI/InputBox/InputBox"
 import useCredentials from "../../hooks/useCredentials/useCredentials"
 import handleSignIn from "../../functions/handleSignIn/handleSignIn"
-import { useSession } from "next-auth/react"
 
 export default function SignInForm({ session }: any) {
     const [credentials, handleEmailChange, handlePasswordChange] = useCredentials()
