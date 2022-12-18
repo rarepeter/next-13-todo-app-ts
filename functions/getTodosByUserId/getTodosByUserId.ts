@@ -28,6 +28,7 @@ const getTodosByUserId = async (userId: string, filters: TodoFilters) => {
     }
 
     const data = await fetch(`${SERVER_URL}/todos/${userId}`, { body: JSON.stringify(fetchGetRequestBody) })
+    console.log(data)
 }
 
 export default getTodosByUserId
