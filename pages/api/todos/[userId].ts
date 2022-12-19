@@ -16,23 +16,11 @@ interface TodoCreationDataRequest extends NextApiRequest {
 export default todoHandler
     .get(async (req: NextApiRequest, res: NextApiResponse) => {
         const { userId }: any = req.query
-        const searchString: any = req.body.filters.search
+        const searchString: string = req.body.filters.search
         console.log(typeof searchString)
         const fetchedUserTodos: Todo[] = await prisma.todo.findMany({
             where: {
-                authorId: userId,
-                // OR: [
-                //     {
-                //         title: {
-                //             search: searchString
-                //         }
-                //     },
-                //     {
-                //         content: {
-                //             search: searchString
-                //         }
-                //     }
-                // ]
+                authorId: userId
             },
             orderBy: {
                 createdAt: 'desc'
