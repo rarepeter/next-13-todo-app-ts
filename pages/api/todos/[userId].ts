@@ -17,7 +17,7 @@ export default todoHandler
     .get(async (req: NextApiRequest, res: NextApiResponse) => {
         const { userId }: any = req.query
         const searchString: string = req.body.filters.search
-        console.log(typeof searchString)
+        
         const fetchedUserTodos: Todo[] = await prisma.todo.findMany({
             where: {
                 authorId: userId
