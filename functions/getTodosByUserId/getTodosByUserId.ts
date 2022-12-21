@@ -1,9 +1,9 @@
 import { SERVER_URL } from "@data/navigation/navigation"
 
 interface TodoFilters {
-    search: string | "" | undefined
-    sortBy: SortBy
-    orderBy: OrderBy
+    search: string | ""
+    sortBy: string
+    orderBy: string
 }
 
 enum SortBy {
@@ -22,13 +22,14 @@ enum OrderBy {
 }
 
 const getTodosByUserId = async (userId: string, filters: TodoFilters) => {
-    const fetchGetRequestBody = {
-        userId,
-        filters
-    }
+    const query = new URLSearchParams({
+        search: filters.search,
+        sortBy: filters.sortBy,
+        orderBy: filters.orderBy
+    })
 
-    const data = await fetch(`${SERVER_URL}/todos/${userId}`, { body: JSON.stringify(fetchGetRequestBody) })
-    console.log(data)
+    const data = await fetch(`${SERVER_URL}/todos/${userId}?${query}`)
+    return data.json()
 }
 
 export default getTodosByUserId

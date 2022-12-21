@@ -15,18 +15,18 @@ interface TodoCreationDataRequest extends NextApiRequest {
 
 export default todoHandler
     .get(async (req: NextApiRequest, res: NextApiResponse) => {
-        const { userId }: any = req.query
-        const searchString: string = req.body.filters.search
-        
+        const { userId, search, sortBy, orderBy }: any = req.query
+
         const fetchedUserTodos: Todo[] = await prisma.todo.findMany({
             where: {
                 authorId: userId
             },
             orderBy: {
-                createdAt: 'desc'
+                [sortBy]: orderBy
             }
         })
-        res.status(200).json({ message: "Todos have been fetched!", fetchedUserTodos: [...fetchedUserTodos] })
+
+        res.status(200).json({ message: "Todos have been fetched!", fetchedUserTodos })
 
     })
     .post(async (req: NextApiRequest, res: NextApiResponse) => {
