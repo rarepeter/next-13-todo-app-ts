@@ -1,7 +1,13 @@
 import { useState } from 'react'
 
+interface Filters {
+    search: string
+    sortBy: string
+    orderBy: string
+}
+
 export default function useFilters() {
-    const [filters, setFilters] = useState({
+    const [filters, setFilters] = useState<Filters>({
         search: "",
         sortBy: "createdAt",
         orderBy: "desc"

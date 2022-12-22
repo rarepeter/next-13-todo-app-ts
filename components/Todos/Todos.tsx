@@ -5,6 +5,7 @@ import TodoList from '@components/TodoList/TodoList'
 import React, { useEffect, useState } from 'react'
 import { DTodo } from 'types/databaseEntities/Todo';
 import getTodosByUserId from '@functions/getTodosByUserId/getTodosByUserId';
+import useFilters from '@hooks/useFilters/useFilters';
 
 function asyncServerComponent<T, R>(fn: (arg: T) => Promise<R>): (arg: T) => R {
     return fn as (arg: T) => R;
@@ -37,21 +38,18 @@ const TodoListMemo = React.memo(TodoList)
 
 export default function Todos({ session }: any) {
     const { image: userId } = session.user
-    const filters = {
-        search: "",
-        sortBy: "createdAt",
-        orderBy: "desc"
-    }
 
-    // const [filters, setFilters] = useState()
-
+    const [filters, handleChangeSearchFilter, handleChangeSortByFilter, handleChangeOrderByFilter] = useFilters()
+    
     const [usersTodos, setUsersTodos] = useState<DTodo[]>([])
+    const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
         (async () => {
             const data: FetchedTodosByUser = await getTodosByUserId(userId, filters)
             if (data) {
                 setUsersTodos(data.fetchedUserTodos)
+                setIsLoading(false)
             }
         })()
 
@@ -61,7 +59,7 @@ export default function Todos({ session }: any) {
     return (
         <>
             <TodosHeader session={session} />
-            {usersTodos ? <TodoListMemo todos={usersTodos} /> : null}
+            {!isLoading ? <TodoListMemo todos={usersTodos} /> : (<div>Todos are loading!</div>)}
         </>
     )
 }
