@@ -13,21 +13,23 @@ export default function SelectionList({ selectionListOptions }: any) {
     const [selectedItem, handleChangeSelectedItem] = useSelectionList(selectionListOptions)
 
     const [isActive, setIsActive] = useState<boolean>(false)
+    console.log(selectionListOptions)
 
     return (
         <div className={styles[`selection-box`]} onClick={() => setIsActive(prev => !prev)}>
-            Sort by:
-            <div className={`${styles[`selection-box__options`]} ${isActive ? styles[`not-active`] : ''}`}>
-                {selectionListOptions.map((item: SelectionListItem, index: number) => {
-                    (<div
-                        className={styles[`selection-option`]}
-                        onClick={() => handleChangeSelectedItem(index)}
-                        key={index}
-                    >
-                        {item.name}
-                    </div>)
-                })}
-            </div>
+            <>
+                {selectedItem.name}
+                <div className={`${styles[`selection-box__options`]} ${!isActive ? styles[`not-active`] : ''}`}>
+                    {selectionListOptions.map((item: SelectionListItem) => {
+                        return (<div
+                            className={styles[`selection-option`]}
+                        // onClick={() => handleChangeSelectedItem()}
+                        >
+                            {item.name}
+                        </div>)
+                    })}
+                </div>
+            </>
         </div>
     )
 }

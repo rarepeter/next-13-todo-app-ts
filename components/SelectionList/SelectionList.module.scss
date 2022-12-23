@@ -1,8 +1,31 @@
 @import '../../styles/colors.scss';
 
 .selection-box {
+    position: relative;
+    background-color: white;
+    padding: 0.75rem;
+    cursor: pointer;
+    
+    &:hover {
+        background-color: $light-theme-cta;
+    }
+
     &__options {
-        padding: 0.25rem;
+        position: absolute;
+        left: 0;
+        top: 100%;
+        background-color: white;
+        display: flex;
+        justify-content: center;
+        align-items: stretch;
+        flex-direction: column;
+        
+        .selection-option {
+            padding: 0.75rem;
+            &:hover {
+                background-color: $light-theme-cta;
+            }
+        }
     }
 
     .not-active { 

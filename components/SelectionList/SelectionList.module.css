@@ -1,5 +1,27 @@
+.selection-box {
+  position: relative;
+  background-color: white;
+  padding: 0.75rem;
+  cursor: pointer;
+}
+.selection-box:hover {
+  background-color: #00AFD6;
+}
 .selection-box__options {
-  padding: 0.25rem;
+  position: absolute;
+  left: 0;
+  top: 100%;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  flex-direction: column;
+}
+.selection-box__options .selection-option {
+  padding: 0.75rem;
+}
+.selection-box__options .selection-option:hover {
+  background-color: #00AFD6;
 }
 .selection-box .not-active {
   display: none;

@@ -1,10 +1,12 @@
-const orderByOptions = [{
-    name: "Ascending",
-    value: "asc"
-},
-{
-    name: "Descending",
-    value: "desc"
-}]
+const orderByOptions = [
+    {
+        name: "Descending",
+        value: "desc"
+    },
+    {
+        name: "Ascending",
+        value: "asc"
+    }
+]
 
 export default orderByOptions
