@@ -1,1 +1,11 @@
-/*# sourceMappingURL=TodosHeader.module.css.map */
+.todos-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+.todos-header__todo-add-button {
+  height: 1rem;
+  width: 3rem;
+}/*# sourceMappingURL=TodosHeader.module.css.map */

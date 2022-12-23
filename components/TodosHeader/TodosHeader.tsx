@@ -14,7 +14,7 @@ export default function TodosHeader({ session }: any) {
         <div className={styles[`todos-header`]}>
             {isOpen ?
                 <TodoAddForm session={session} onClose={() => setIsOpen(false)} /> :
-                <ButtonCta onClick={() => setIsOpen(true)}>+</ButtonCta>
+                <ButtonCta className={styles[`todos-header__todo-add-button`]} onClick={() => setIsOpen(true)}>+</ButtonCta>
             }
             <SelectionList selectionListOptions={sortByOptions} />
         </div>
