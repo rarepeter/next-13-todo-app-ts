@@ -9,21 +9,20 @@ interface SelectionListItem {
     value: string
 }
 
-export default function SelectionList({ selectionListOptions }: any) {
+export default function SelectionList({ selectionListOptions, onChange }: any) {
     const [selectedItem, handleChangeSelectedItem] = useSelectionList(selectionListOptions)
 
     const [isActive, setIsActive] = useState<boolean>(false)
-    console.log(selectionListOptions)
 
     return (
         <div className={styles[`selection-box`]} onClick={() => setIsActive(prev => !prev)}>
             <>
                 {selectedItem.name}
                 <div className={`${styles[`selection-box__options`]} ${!isActive ? styles[`not-active`] : ''}`}>
-                    {selectionListOptions.map((item: SelectionListItem) => {
+                    {selectionListOptions.map((item: SelectionListItem, index: number) => {
                         return (<div
                             className={styles[`selection-option`]}
-                        // onClick={() => handleChangeSelectedItem()}
+                            onClick={() => handleChangeSelectedItem(index)}
                         >
                             {item.name}
                         </div>)

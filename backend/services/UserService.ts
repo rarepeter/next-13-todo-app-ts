@@ -1,5 +1,5 @@
 import bcrypt from 'bcrypt'
-import Credentials from 'types/credentials'
+import Credentials from 'types/Credentials'
 import { DUser, UserDto } from 'types/databaseEntities/User'
 import { v4 as uuidv4 } from 'uuid'
 

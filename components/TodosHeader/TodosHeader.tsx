@@ -3,11 +3,12 @@
 import SelectionList from '@components/SelectionList/SelectionList'
 import TodoAddForm from '@components/TodoAddForm/TodoAddForm'
 import ButtonCta from '@components/UI/ButtonCta/ButtonCta'
+import orderByOptions from '@data/orderByOptions/orderByOptions'
 import sortByOptions from '@data/sortByOptions/sortByOptions'
 import React, { useState } from 'react'
 import styles from './TodosHeader.module.css'
 
-export default function TodosHeader({ session }: any) {
+export default function TodosHeader({ session, handleChangeSearchFilter, handleChangeSortByFilter, handleChangeOrderByFilter }: any) {
     const [isOpen, setIsOpen] = useState<boolean>(false)
 
     return (
@@ -16,7 +17,8 @@ export default function TodosHeader({ session }: any) {
                 <TodoAddForm session={session} onClose={() => setIsOpen(false)} /> :
                 <ButtonCta className={styles[`todos-header__todo-add-button`]} onClick={() => setIsOpen(true)}>+</ButtonCta>
             }
-            <SelectionList selectionListOptions={sortByOptions} />
+            <SelectionList selectionListOptions={sortByOptions} onChange={handleChangeSortByFilter} />
+            <SelectionList selectionListOptions={orderByOptions} onChange={handleChangeOrderByFilter} />
         </div>
     )
 }

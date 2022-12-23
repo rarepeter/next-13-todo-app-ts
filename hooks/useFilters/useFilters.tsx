@@ -1,17 +1,8 @@
 import { useState } from 'react'
+import Filters from 'types/TodoFilters'
 
-interface Filters {
-    search: string
-    sortBy: string
-    orderBy: string
-}
-
-export default function useFilters() {
-    const [filters, setFilters] = useState<Filters>({
-        search: "",
-        sortBy: "createdAt",
-        orderBy: "desc"
-    })
+export default function useFilters(defaultFilters: Filters) {
+    const [filters, setFilters] = useState<Filters>(defaultFilters)
 
     const handleChangeSearchFilter = (search: string) => {
         setFilters(prev => ({ ...prev, search }))

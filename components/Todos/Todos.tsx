@@ -32,11 +32,17 @@ const TodoListMemo = React.memo(TodoList)
 //     )
 // })
 
+const defaultFilters = {
+    search: "",
+    sortBy: "createdAt",
+    orderBy: "desc"
+}
+
 export default function Todos({ session }: any) {
     const { image: userId } = session.user
 
-    const [filters, handleChangeSearchFilter, handleChangeSortByFilter, handleChangeOrderByFilter] = useFilters()
-    
+    const [filters, handleChangeSearchFilter, handleChangeSortByFilter, handleChangeOrderByFilter] = useFilters(defaultFilters)
+
     const [usersTodos, setUsersTodos] = useState<DTodo[]>([])
     const [isLoading, setIsLoading] = useState(true)
 
@@ -53,7 +59,12 @@ export default function Todos({ session }: any) {
 
     return (
         <>
-            <TodosHeader session={session} />
+            <TodosHeader
+                session={session}
+                handleChangeSearchFilter={handleChangeSearchFilter}
+                handleChangeSortByFilter={handleChangeSortByFilter}
+                handleChangeOrderByFilter={handleChangeOrderByFilter}
+            />
             {!isLoading ? <TodoListMemo todos={usersTodos} /> : (<div>Todos are loading!</div>)}
         </>
     )

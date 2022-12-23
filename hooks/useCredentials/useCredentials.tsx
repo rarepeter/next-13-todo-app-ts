@@ -1,4 +1,4 @@
-import Credentials from 'types/credentials'
+import Credentials from 'types/Credentials'
 import { useState } from 'react'
 
 export default function useCredentials() {
