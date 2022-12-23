@@ -1,1 +1,1 @@
-{"version":3,"sources":["TodosHeader.module.scss","TodosHeader.module.css"],"names":[],"mappings":"AAAA;EACI,aAAA;EACA,uBAAA;EACA,mBAAA;EACA,SAAA;EACA,WAAA;ACCJ;ADCI;EACI,YAAA;EACA,WAAA;ACCR","file":"TodosHeader.module.css"}
+{"version":3,"sources":["TodosHeader.module.scss","TodosHeader.module.css","../../styles/_colors.scss"],"names":[],"mappings":"AAEA;EACI,aAAA;EACA,uBAAA;EACA,mBAAA;EACA,SAAA;EACA,WAAA;ACDJ;ADGI;EACI,YAAA;EACA,WAAA;EACA,yBEVU;EFWV,eAAA;EACA,kBAAA;EACA,YAAA;EACA,cEhBiB;ADezB;ADGQ;EACI,wCAAA;ACDZ","file":"TodosHeader.module.css"}
