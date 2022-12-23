@@ -54,8 +54,8 @@ export default function Todos({ session }: any) {
                 setIsLoading(false)
             }
         })()
-
-    }, [])
+        
+    }, [filters])
 
     return (
         <>

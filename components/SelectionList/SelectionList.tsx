@@ -9,7 +9,7 @@ interface SelectionListItem {
     value: string
 }
 
-export default function SelectionList({ selectionListOptions, onChange }: any) {
+export default function SelectionList({ selectionListOptions, handleSetValue }: any) {
     const [selectedItem, handleChangeSelectedItem] = useSelectionList(selectionListOptions)
 
     const [isActive, setIsActive] = useState<boolean>(false)
@@ -22,7 +22,10 @@ export default function SelectionList({ selectionListOptions, onChange }: any) {
                     {selectionListOptions.map((item: SelectionListItem, index: number) => {
                         return (<div
                             className={styles[`selection-option`]}
-                            onClick={() => handleChangeSelectedItem(index)}
+                            onClick={() => {
+                                handleChangeSelectedItem(index)
+                                handleSetValue(item.value)
+                            }}
                         >
                             {item.name}
                         </div>)

@@ -17,8 +17,8 @@ export default function TodosHeader({ session, handleChangeSearchFilter, handleC
                 <TodoAddForm session={session} onClose={() => setIsOpen(false)} /> :
                 <ButtonCta className={styles[`todos-header__todo-add-button`]} onClick={() => setIsOpen(true)}>+</ButtonCta>
             }
-            <SelectionList selectionListOptions={sortByOptions} onChange={handleChangeSortByFilter} />
-            <SelectionList selectionListOptions={orderByOptions} onChange={handleChangeOrderByFilter} />
+            <SelectionList selectionListOptions={sortByOptions} handleSetValue={handleChangeSortByFilter} />
+            <SelectionList selectionListOptions={orderByOptions} handleSetValue={handleChangeOrderByFilter} />
         </div>
     )
 }
