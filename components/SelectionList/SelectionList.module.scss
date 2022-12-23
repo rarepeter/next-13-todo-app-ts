@@ -1,2 +1,11 @@
 @import '../../styles/colors.scss';
 
+.selection-box {
+    &__options {
+        padding: 0.25rem;
+    }
+
+    .not-active { 
+        display: none;
+    }
+}

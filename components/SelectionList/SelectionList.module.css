@@ -1,0 +1,6 @@
+.selection-box__options {
+  padding: 0.25rem;
+}
+.selection-box .not-active {
+  display: none;
+}/*# sourceMappingURL=SelectionList.module.css.map */
