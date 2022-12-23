@@ -7,10 +7,6 @@ import { DTodo } from 'types/databaseEntities/Todo';
 import getTodosByUserId from '@functions/getTodosByUserId/getTodosByUserId';
 import useFilters from '@hooks/useFilters/useFilters';
 
-function asyncServerComponent<T, R>(fn: (arg: T) => Promise<R>): (arg: T) => R {
-    return fn as (arg: T) => R;
-}
-
 interface FetchedTodosByUser {
     message: string
     fetchedUserTodos: DTodo[]
@@ -54,7 +50,6 @@ export default function Todos({ session }: any) {
         })()
 
     }, [])
-    console.log(usersTodos)
 
     return (
         <>
