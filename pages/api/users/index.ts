@@ -1,8 +1,8 @@
-import { PrismaClient } from '@prisma/client'
 import userHandler from '../../../backend/handlers/UserHandler'
 import { NextApiRequest, NextApiResponse } from 'next'
 import { DUser, UserDto } from 'types/databaseEntities/User'
 import Credentials from 'types/Credentials'
+import { PrismaClient } from '@prisma/client'
 import UserService from 'backend/services/UserService'
 
 const prisma = new PrismaClient()
