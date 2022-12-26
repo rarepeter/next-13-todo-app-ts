@@ -26,4 +26,4 @@ enum TodoStatus {
     "DELETED"
 }
 
-export type { CreatedTodo, TodoCreationData, DTodo}
+export type { CreatedTodo, TodoCreationData, DTodo }

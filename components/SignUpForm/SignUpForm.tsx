@@ -7,11 +7,12 @@ import InputBox from '../UI/InputBox/InputBox'
 import ButtonCta from '../UI/ButtonCta/ButtonCta'
 import useCredentials from '../../hooks/useCredentials/useCredentials'
 import handleSignUp from '../../functions/handleSignUp/handleSignUp'
+import { CLIENT_URL } from '@data/navigation/navigation'
 
 export default function SignUpForm({ session }: any) {
     const [newUserCredentials, handleEmailChange, handlePasswordChange] = useCredentials()
     if (session && typeof window !== "undefined") {
-        window.location.replace('http://localhost:3000')
+        window.location.replace(CLIENT_URL)
     }
 
     return (

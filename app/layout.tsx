@@ -10,6 +10,7 @@ interface Props {
 
 export default async function layout({ children }: Props) {
     const session = await unstable_getServerSession()
+    
     return (
         <html>
             <head>

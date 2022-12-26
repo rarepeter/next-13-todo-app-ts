@@ -6,31 +6,9 @@ import React, { useEffect, useState } from 'react'
 import { DTodo } from 'types/databaseEntities/Todo';
 import getTodosByUserId from '@functions/getTodosByUserId/getTodosByUserId';
 import useFilters from '@hooks/useFilters/useFilters';
-
-interface FetchedTodosByUser {
-    message: string
-    fetchedUserTodos: DTodo[]
-}
+import FetchedTodosByUser from 'types/api/clientAPI';
 
 const TodoListMemo = React.memo(TodoList)
-
-// export default asyncServerComponent(async function Todos({ session }: any) {
-//     const { image: userId } = session.user
-//     const filters = {
-//         search: "MySearchParameter",
-//         sortBy: "createdAt",
-//         orderBy: "desc"
-//     }
-
-//     const data: FetchedTodosByUser = await getTodosByUserId(userId, filters)
-
-//     return (
-//         <>
-//             <TodosHeader session={session} />
-//             <TodoListMemo todos={data.fetchedUserTodos} />
-//         </>
-//     )
-// })
 
 const defaultFilters = {
     search: "",
