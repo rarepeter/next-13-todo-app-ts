@@ -1,4 +1,5 @@
 import { PrismaClient, Todo } from "@prisma/client";
+import TodoController from "backend/controllers/TodoController";
 import todoHandler from "backend/handlers/TodoHandler";
 import TodoService from "backend/services/TodoService";
 import { NextApiRequest, NextApiResponse } from "next";
@@ -34,11 +35,12 @@ export default todoHandler
         const todoBody: TodoCreationData = JSON.parse(req.body)
 
         const newTodoData: CreatedTodo = TodoService.create(userId, todoBody)
-        const createdTodo: Todo = await prisma.todo.create({
-            data: newTodoData
-        })
+        const createdTodo: Todo = await TodoController.create(newTodoData)
 
         if (createdTodo) {
             res.status(201).json({ message: "Todo has been created!", createdTodo })
         }
+    })
+    .delete(async (req: NextApiRequest, res: NextApiResponse) => {
+        const { userId }: any = req.query
     })
