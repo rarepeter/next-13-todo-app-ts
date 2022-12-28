@@ -9,15 +9,15 @@ export default function useUsersTodos() {
         setUsersTodos(todos)
     }
 
-    const handleAddTodo = (newTodo: DTodo) => {
+    const handleAddTodoClient = (newTodo: DTodo) => {
         setUsersTodos(prev => [newTodo, ...prev])
     }
 
-    const handleDeleteTodo = (todoId: Todo['id']) => {
+    const handleDeleteTodoClient = (todoId: Todo['id']) => {
         setUsersTodos(prev => {
             return prev.filter(todo => todo.id !== todoId)
         })
     }
 
-    return [usersTodos, handleSetTodos, handleAddTodo, handleDeleteTodo] as const
+    return [usersTodos, handleSetTodos, handleAddTodoClient, handleDeleteTodoClient] as const
 }

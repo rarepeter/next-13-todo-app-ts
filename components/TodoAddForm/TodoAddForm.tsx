@@ -7,7 +7,7 @@ import useTodos from '@hooks/useTodo/useTodo'
 import React from 'react'
 import styles from './TodoAddForm.module.css'
 
-export default function TodoAddForm({ session, onClose }: any) {
+export default function TodoAddForm({ session, onClose, handleAddTodoClient }: any) {
     const { image: userId } = session.user
     const [todo, handleChangeTodoTitle, handleChangeTodoContent] = useTodos()
 
@@ -18,7 +18,7 @@ export default function TodoAddForm({ session, onClose }: any) {
                 <path d="M1 1L13 13" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
 
-            <form onSubmit={e => handleAddTodo(e, userId, todo)}>
+            <form onSubmit={e => handleAddTodo(e, userId, todo, handleAddTodoClient)}>
                 <TextArea
                     onChange={e => handleChangeTodoTitle(e.target.value)}
                     className={styles[`todo-add-card__text-area-box`]}

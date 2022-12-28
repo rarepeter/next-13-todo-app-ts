@@ -3,7 +3,6 @@
 import TodosHeader from '@components/TodosHeader/TodosHeader'
 import TodoList from '@components/TodoList/TodoList'
 import React, { useEffect, useState } from 'react'
-import { DTodo } from 'types/databaseEntities/Todo';
 import getTodosByUserId from '@functions/getTodosByUserId/getTodosByUserId';
 import useFilters from '@hooks/useFilters/useFilters';
 import FetchedTodosByUser from 'types/api/clientAPI';
@@ -23,7 +22,7 @@ export default function Todos({ session }: any) {
 
     const [filters, handleChangeSearchFilter, handleChangeSortByFilter, handleChangeOrderByFilter] = useFilters(defaultFilters)
 
-    const [usersTodos, handleSetTodos, handleAddTodo, handleDeleteTodo] = useUsersTodos()
+    const [usersTodos, handleSetTodos, handleAddTodoClient, handleDeleteTodoClient] = useUsersTodos()
 
     const [isLoading, setIsLoading] = useState(true)
 
@@ -45,6 +44,7 @@ export default function Todos({ session }: any) {
                 handleChangeSearchFilter={handleChangeSearchFilter}
                 handleChangeSortByFilter={handleChangeSortByFilter}
                 handleChangeOrderByFilter={handleChangeOrderByFilter}
+                handleAddTodoClient={handleAddTodoClient}
             />
             {!isLoading ? <TodoListMemo todos={usersTodos} /> : (<div>Todos are loading!</div>)}
         </>
