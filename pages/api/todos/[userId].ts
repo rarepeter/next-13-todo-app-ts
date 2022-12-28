@@ -13,7 +13,15 @@ export default todoHandler
 
         const fetchedUserTodos: Todo[] = await prisma.todo.findMany({
             where: {
-                authorId: userId
+                authorId: userId,
+                OR: [
+                    {
+                        status: "COMPLETED"
+                    },
+                    {
+                        status: "NOT_COMPLETED"
+                    }
+                ]
             },
             orderBy: {
                 [sortBy]: orderBy
@@ -34,7 +42,9 @@ export default todoHandler
             res.status(201).json({ message: "Todo has been created!", createdTodo })
         }
     })
-    .delete(async (req: NextApiRequest, res: NextApiResponse) => {
-        const { userId }: any = req.query
+    .put(async (req: NextApiRequest, res: NextApiResponse) => {
+        const { userId, todoId }: any = req.query
+        const temporarilyDeletedTodo = TodoController.moveToDeleted(todoId)
 
+        res.status(200).json({ message: "Todo has been moved to recently deleted todos section!", temporarilyDeletedTodo })
     })

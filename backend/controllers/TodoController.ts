@@ -12,8 +12,17 @@ class TodoController {
         return createdTodo
     }
 
-    async delete(todoId: Todo['id']) {
+    async moveToDeleted(todoId: Todo['id']) {
+        const deletedTodo: Todo = await prisma.todo.update({
+            where: {
+                id: todoId
+            },
+            data: {
+                status: "DELETED"
+            }
+        })
 
+        return deletedTodo
     }
 }
 
