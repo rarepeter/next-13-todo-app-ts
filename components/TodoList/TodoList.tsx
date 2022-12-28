@@ -1,23 +1,25 @@
 import ButtonCta from '@components/UI/ButtonCta/ButtonCta'
 import handleMoveToRecentlyDeletedTodos from '@functions/handleMoveToRecentlyDeletedTodos/handleMoveToRecentlyDeletedTodos'
 import { getShortDateString } from '@functions/time/time'
+import { Todo } from '@prisma/client'
 import React from 'react'
 import { DTodo } from 'types/databaseEntities/Todo'
 import styles from './TodoList.module.css'
 
 interface TodoListProps {
     todos: DTodo[]
+    handleDeleteTodoClient: (todoId: Todo['id']) => void
 }
 
-export default function TodoList({ todos }: TodoListProps) {
+export default function TodoList({ todos, handleDeleteTodoClient }: TodoListProps) {
     return (
         <div className={styles[`todo-list-wrapper`]}>
-            {todos.map((item: DTodo) => {
-                const dateCreated = getShortDateString(new Date(item.createdAt))
+            {todos.map((todo: DTodo) => {
+                const dateCreated = getShortDateString(new Date(todo.createdAt))
                 return (
-                    <div key={item.id} className={styles[`todo-card`]}>
-                        <div className={styles[`todo-card__title`]}>{item.title}</div>
-                        <div className={styles[`todo-card__content`]}>{item.content}</div>
+                    <div key={todo.id} className={styles[`todo-card`]}>
+                        <div className={styles[`todo-card__title`]}>{todo.title}</div>
+                        <div className={styles[`todo-card__content`]}>{todo.content}</div>
                         <div className={styles[`todo-card__date-created`]}>Created on {dateCreated}</div>
                         <div className={styles[`todo-card__buttons`]}>
                             <ButtonCta className={styles[`modify-button`]}>
@@ -32,7 +34,7 @@ export default function TodoList({ todos }: TodoListProps) {
                                     </defs>
                                 </svg>
                             </ButtonCta>
-                            <ButtonCta className={styles[`delete-button`]} onClick={(e) => handleMoveToRecentlyDeletedTodos(e, item.id, item.authorId)}>
+                            <ButtonCta className={styles[`delete-button`]} onClick={(e) => handleMoveToRecentlyDeletedTodos(e, todo.id, todo.authorId, handleDeleteTodoClient)}>
                                 <svg viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path fillRule="evenodd" clipRule="evenodd" d="M5.98685 16.4561C5.98685 16.9737 6.74672 17.6842 7.2533 17.6842H14.852C15.3586 17.6842 16.1184 16.9737 16.1184 16.4561V6.63158H5.98685V16.4561ZM17.1316 3.82974H14.4298L13.079 2.21053H9.02633L7.67545 3.82974H4.97369V5.44895H17.1316V3.82974Z" />
                                 </svg>

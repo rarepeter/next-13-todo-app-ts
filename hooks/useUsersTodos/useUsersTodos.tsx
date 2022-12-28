@@ -13,7 +13,7 @@ export default function useUsersTodos() {
         setUsersTodos(prev => [newTodo, ...prev])
     }
 
-    const handleDeleteTodoClient = (todoId: Todo['id']) => {
+    const handleDeleteTodoClient = (todoId: Todo['id']): void => {
         setUsersTodos(prev => {
             return prev.filter(todo => todo.id !== todoId)
         })

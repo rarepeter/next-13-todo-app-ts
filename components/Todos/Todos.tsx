@@ -46,7 +46,7 @@ export default function Todos({ session }: any) {
                 handleChangeOrderByFilter={handleChangeOrderByFilter}
                 handleAddTodoClient={handleAddTodoClient}
             />
-            {!isLoading ? <TodoListMemo todos={usersTodos} /> : (<div>Todos are loading!</div>)}
+            {!isLoading ? <TodoListMemo todos={usersTodos} handleDeleteTodoClient={handleDeleteTodoClient}/> : (<div>Todos are loading!</div>)}
         </>
     )
 }
