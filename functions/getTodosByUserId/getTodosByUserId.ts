@@ -1,25 +1,5 @@
 import { SERVER_URL } from "@data/navigation/navigation"
-
-interface TodoFilters {
-    search: string | ""
-    sortBy: string
-    orderBy: string
-}
-
-enum SortBy {
-    "date",
-    "title",
-    "content",
-    "",
-    undefined
-}
-
-enum OrderBy {
-    "asc",
-    "desc",
-    "",
-    undefined
-}
+import TodoFilters from "types/TodoFilters"
 
 const getTodosByUserId = async (userId: string, filters: TodoFilters) => {
     const query = new URLSearchParams({

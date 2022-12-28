@@ -7,10 +7,11 @@ import { DTodo } from 'types/databaseEntities/Todo';
 import getTodosByUserId from '@functions/getTodosByUserId/getTodosByUserId';
 import useFilters from '@hooks/useFilters/useFilters';
 import FetchedTodosByUser from 'types/api/clientAPI';
+import TodoFilters from 'types/TodoFilters';
 
 const TodoListMemo = React.memo(TodoList)
 
-const defaultFilters = {
+const defaultFilters: TodoFilters = {
     search: "",
     sortBy: "createdAt",
     orderBy: "desc"

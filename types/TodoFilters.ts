@@ -1,5 +1,7 @@
-export default interface Filters {
+interface TodoFilters {
     search: string
-    sortBy: string
-    orderBy: string
+    sortBy: "createdAt" | "title" | "content"
+    orderBy: "asc" | "desc"
 }
+
+export default TodoFilters

@@ -7,13 +7,6 @@ import { CreatedTodo, TodoCreationData } from "types/databaseEntities/Todo";
 
 const prisma = new PrismaClient()
 
-interface TodoCreationDataRequest extends NextApiRequest {
-    body: {
-        title: string
-        content: string
-    }
-}
-
 export default todoHandler
     .get(async (req: NextApiRequest, res: NextApiResponse) => {
         const { userId, search, sortBy, orderBy }: any = req.query
@@ -43,4 +36,5 @@ export default todoHandler
     })
     .delete(async (req: NextApiRequest, res: NextApiResponse) => {
         const { userId }: any = req.query
+
     })

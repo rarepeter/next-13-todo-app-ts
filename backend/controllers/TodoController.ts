@@ -11,6 +11,10 @@ class TodoController {
 
         return createdTodo
     }
+
+    async delete(todoId: Todo['id']) {
+
+    }
 }
 
 export default new TodoController()
