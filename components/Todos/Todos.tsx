@@ -8,6 +8,7 @@ import getTodosByUserId from '@functions/getTodosByUserId/getTodosByUserId';
 import useFilters from '@hooks/useFilters/useFilters';
 import FetchedTodosByUser from 'types/api/clientAPI';
 import TodoFilters from 'types/TodoFilters';
+import useUsersTodos from '@hooks/useUsersTodos/useUsersTodos';
 
 const TodoListMemo = React.memo(TodoList)
 
@@ -22,14 +23,15 @@ export default function Todos({ session }: any) {
 
     const [filters, handleChangeSearchFilter, handleChangeSortByFilter, handleChangeOrderByFilter] = useFilters(defaultFilters)
 
-    const [usersTodos, setUsersTodos] = useState<DTodo[]>([])
+    const [usersTodos, handleSetTodos, handleAddTodo, handleDeleteTodo] = useUsersTodos()
+
     const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
         (async () => {
             const data: FetchedTodosByUser = await getTodosByUserId(userId, filters)
             if (data) {
-                setUsersTodos(data.fetchedUserTodos)
+                handleSetTodos(data.fetchedUserTodos)
                 setIsLoading(false)
             }
         })()

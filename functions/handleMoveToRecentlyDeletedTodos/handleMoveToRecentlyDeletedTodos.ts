@@ -10,7 +10,9 @@ const handleMoveToRecentlyDeletedTodos = async (e: any, todoId: Todo['id'], user
 
         const data = await fetch(`${SERVER_URL}/todos/${userId}?${query}`, { method: "PUT" })
 
-        return data
+        if (data) {
+            window.location.reload()
+        }
 
     } catch (e) {
         throw new Error("There has been an error when deleting the todo.")

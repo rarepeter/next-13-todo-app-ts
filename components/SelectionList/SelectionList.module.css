@@ -9,6 +9,7 @@
 }
 .selection-box__options {
   position: absolute;
+  z-index: 99;
   left: 0;
   top: 100%;
   background-color: white;
