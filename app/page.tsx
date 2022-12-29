@@ -7,6 +7,7 @@ import '@styles/global.css'
 
 export default async function HomePage() {
     const session = await unstable_getServerSession()
+    console.log(session)
 
     return (
         <section className={styles[`home-page`]}>
