@@ -5,7 +5,8 @@ const getTodosByUserId = async (userId: string, filters: TodoFilters) => {
     const query = new URLSearchParams({
         search: filters.search,
         sortBy: filters.sortBy,
-        orderBy: filters.orderBy
+        orderBy: filters.orderBy,
+        type: filters.type
     })
 
     const data = await fetch(`${SERVER_URL}/todos/${userId}?${query}`)

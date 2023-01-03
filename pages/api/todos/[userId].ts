@@ -9,7 +9,7 @@ const prisma = new PrismaClient()
 
 export default todoHandler
     .get(async (req: NextApiRequest, res: NextApiResponse) => {
-        const { userId, search, sortBy, orderBy }: any = req.query
+        const { userId, search, sortBy, orderBy, type }: any = req.query
 
         const fetchedUserTodos: Todo[] = await prisma.todo.findMany({
             where: {

@@ -14,7 +14,8 @@ const TodoListMemo = React.memo(TodoList)
 const defaultFilters: TodoFilters = {
     search: "",
     sortBy: "createdAt",
-    orderBy: "desc"
+    orderBy: "desc",
+    type: "all-not-deleted"
 }
 
 export default function Todos({ session }: any) {
