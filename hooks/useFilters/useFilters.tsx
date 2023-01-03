@@ -13,6 +13,9 @@ export default function useFilters(defaultFilters: Filters) {
     const handleChangeOrderByFilter = (orderBy: Filters['orderBy']) => {
         setFilters(prev => ({ ...prev, orderBy }))
     }
+    const handleChangeTypeFilter = (type: Filters['type']) => {
+        setFilters(prev => ({ ...prev, type }))
+    }
 
-    return [filters, handleChangeSearchFilter, handleChangeSortByFilter, handleChangeOrderByFilter] as const
+    return [filters, handleChangeSearchFilter, handleChangeSortByFilter, handleChangeOrderByFilter, handleChangeTypeFilter] as const
 }

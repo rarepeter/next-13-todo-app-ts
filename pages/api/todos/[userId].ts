@@ -4,6 +4,7 @@ import todoHandler from "backend/handlers/TodoHandler";
 import TodoService from "backend/services/TodoService";
 import { NextApiRequest, NextApiResponse } from "next";
 import { CreatedTodo, TodoCreationData } from "types/databaseEntities/Todo";
+import TodoFilters from "types/TodoFilters";
 
 const prisma = new PrismaClient()
 
@@ -11,22 +12,32 @@ export default todoHandler
     .get(async (req: NextApiRequest, res: NextApiResponse) => {
         const { userId, search, sortBy, orderBy, type }: any = req.query
 
-        const fetchedUserTodos: Todo[] = await prisma.todo.findMany({
-            where: {
-                authorId: userId,
-                OR: [
-                    {
-                        status: "COMPLETED"
-                    },
-                    {
-                        status: "NOT_COMPLETED"
-                    }
-                ]
-            },
-            orderBy: {
-                [sortBy]: orderBy
-            }
-        })
+        const filters: TodoFilters = {
+            search,
+            sortBy,
+            orderBy,
+            type
+        }
+
+        let fetchedUserTodos: Todo[]
+
+        switch (type) {
+            case "all-not-deleted":
+                fetchedUserTodos = await TodoController.getAllNotDeletedTodos(userId, filters)
+                break
+            case "not-completed":
+                fetchedUserTodos = await TodoController.getNotCompletedTodos(userId, filters)
+                break
+            case "completed":
+                fetchedUserTodos = await TodoController.getCompletedTodos(userId, filters)
+                break
+            case "recently-deleted":
+                fetchedUserTodos = await TodoController.getRecentlyDeletedTodos(userId, filters)
+                break
+            default:
+                fetchedUserTodos = await TodoController.getAllTodos(userId, filters)
+                break
+        }
 
         res.status(200).json({ message: "Todos have been fetched!", fetchedUserTodos })
 

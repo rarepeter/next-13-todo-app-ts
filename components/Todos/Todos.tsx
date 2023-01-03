@@ -21,7 +21,7 @@ const defaultFilters: TodoFilters = {
 export default function Todos({ session }: any) {
     const { image: userId } = session.user
 
-    const [filters, handleChangeSearchFilter, handleChangeSortByFilter, handleChangeOrderByFilter] = useFilters(defaultFilters)
+    const [filters, handleChangeSearchFilter, handleChangeSortByFilter, handleChangeOrderByFilter, handleChangeTypeFilter] = useFilters(defaultFilters)
 
     const [usersTodos, handleSetTodos, handleAddTodoClient, handleDeleteTodoClient] = useUsersTodos()
 
@@ -45,6 +45,7 @@ export default function Todos({ session }: any) {
                 handleChangeSearchFilter={handleChangeSearchFilter}
                 handleChangeSortByFilter={handleChangeSortByFilter}
                 handleChangeOrderByFilter={handleChangeOrderByFilter}
+                handleChangeTypeFilter={handleChangeTypeFilter}
                 handleAddTodoClient={handleAddTodoClient}
             />
             {!isLoading ? <TodoListMemo todos={usersTodos} handleDeleteTodoClient={handleDeleteTodoClient}/> : (<div>Todos are loading!</div>)}
