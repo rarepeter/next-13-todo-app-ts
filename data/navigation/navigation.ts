@@ -14,11 +14,7 @@ const navigation: Navigation[] = [
     {
         href: "/appointments",
         label: "Appointments"
-    },
-    {
-        href: "/deleted-recently",
-        label: "Recently deleted todos"
-    },
+    }
 ]
 
 export default navigation
