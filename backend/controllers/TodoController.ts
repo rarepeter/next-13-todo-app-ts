@@ -1,105 +1,71 @@
-import { PrismaClient, Todo, User } from "@prisma/client";
-import { CreatedTodo } from "types/databaseEntities/Todo";
+import { Todo } from "@prisma/client";
+import TodoService from "backend/services/TodoService";
+import { NextApiRequest, NextApiResponse } from "next";
+import { TodoCreationData } from "types/databaseEntities/Todo";
 import TodoFilters from "types/TodoFilters";
 
-const prisma = new PrismaClient()
-
 class TodoController {
-    async create(newTodoData: CreatedTodo) {
-        const createdTodo: Todo = await prisma.todo.create({
-            data: newTodoData
-        })
 
-        return createdTodo
+    async create(req: NextApiRequest, res: NextApiResponse) {
+        try {
+            const { userId }: any = req.query
+            const todoBody: TodoCreationData = JSON.parse(req.body)
+
+            const newTodoData: Todo = await TodoService.create(userId, todoBody)
+
+            if (newTodoData) {
+                res.status(201).json({ message: "The todo has been created!", newTodoData })
+            } else {
+                res.status(400).json({ message: "There has been an error while creating the todo!" })
+            }
+
+        } catch (err) {
+            console.log(err)
+            throw new Error("There has been an error while creating the todo!")
+        }
     }
 
-    async moveToDeleted(todoId: Todo['id']) {
-        const deletedTodo: Todo = await prisma.todo.update({
-            where: {
-                id: todoId
-            },
-            data: {
-                status: "DELETED"
-            }
-        })
+    async get(req: NextApiRequest, res: NextApiResponse) {
+        try {
+            const { userId, search, sortBy, orderBy, type }: any = req.query
 
-        return deletedTodo
+            const filters: TodoFilters = {
+                search,
+                sortBy,
+                orderBy,
+                type
+            }
+
+            let fetchedUserTodos: Todo[] = await TodoService.get(userId, filters)
+
+            if (fetchedUserTodos) {
+                res.status(200).json({ message: "Todos have been fetched!", fetchedUserTodos })
+            } else {
+                res.status(400).json({ message: "There has been an error!" })
+            }
+
+        } catch (err) {
+            console.log(err)
+            throw new Error("There has been a problem while fetching the todos!")
+        }
     }
 
-    async getAllTodos(userId: User['id'], filters: TodoFilters) {
-        const fetchedUserTodos: Todo[] = await prisma.todo.findMany({
-            where: {
-                authorId: userId
-            },
-            orderBy: {
-                [filters.sortBy]: filters.orderBy
+    async moveToDeleted(req: NextApiRequest, res: NextApiResponse) {
+        try {
+            const { todoId }: any = req.query
+            const temporarilyDeletedTodo: Todo = await TodoService.moveToDeleted(todoId)
+
+            if (temporarilyDeletedTodo) {
+                res.status(200).json({ message: "The todo has been declared recently deleted.", temporarilyDeletedTodo })
+            } else {
+                res.status(400).json({ message: "There has been an error!" })
             }
-        })
 
-        return fetchedUserTodos
-    }
 
-    async getAllNotDeletedTodos(userId: User['id'], filters: TodoFilters) {
-        const fetchedUserTodos: Todo[] = await prisma.todo.findMany({
-            where: {
-                authorId: userId,
-                OR: [
-                    {
-                        status: "COMPLETED"
-                    },
-                    {
-                        status: "NOT_COMPLETED"
-                    }
-                ]
-            },
-            orderBy: {
-                [filters.sortBy]: filters.orderBy
-            }
-        })
-
-        return fetchedUserTodos
-    }
-
-    async getCompletedTodos(userId: User['id'], filters: TodoFilters) {
-        const fetchedUserTodos: Todo[] = await prisma.todo.findMany({
-            where: {
-                authorId: userId,
-                status: "COMPLETED"
-            },
-            orderBy: {
-                [filters.sortBy]: filters.orderBy
-            }
-        })
-
-        return fetchedUserTodos
-    }
-
-    async getNotCompletedTodos(userId: User['id'], filters: TodoFilters) {
-        const fetchedUserTodos: Todo[] = await prisma.todo.findMany({
-            where: {
-                authorId: userId,
-                status: "NOT_COMPLETED"
-            },
-            orderBy: {
-                [filters.sortBy]: filters.orderBy
-            }
-        })
-
-        return fetchedUserTodos
-    }
-
-    async getRecentlyDeletedTodos(userId: User['id'], filters: TodoFilters) {
-        const fetchedUserTodos: Todo[] = await prisma.todo.findMany({
-            where: {
-                authorId: userId,
-                status: "DELETED"
-            },
-            orderBy: {
-                [filters.sortBy]: filters.orderBy
-            }
-        })
-
-        return fetchedUserTodos
+        } catch (err) {
+            console.log(err)
+            throw new Error("There has been a problem while declaring the todo recently deleted!")
+        }
     }
 }
 
