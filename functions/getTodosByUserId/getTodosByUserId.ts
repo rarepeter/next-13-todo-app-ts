@@ -9,7 +9,11 @@ const getTodosByUserId = async (userId: string, filters: TodoFilters) => {
         type: filters.type
     })
 
-    const data = await fetch(`${SERVER_URL}/todos/${userId}?${query}`)
+    const data = await fetch(`${SERVER_URL}/todos/${userId}?${query}`, {
+        headers: {
+            'auth': userId
+        }
+    })
     return data.json()
 }
 
