@@ -16,10 +16,10 @@ interface DUser {
     verified: boolean | undefined
 }
 
-interface UserDto {
+interface IUserDto {
     id: string
     email: string
     name?: string | null
 }
 
-export type { DUser, UserDto, NewUserData }
+export type { DUser, IUserDto, NewUserData }
