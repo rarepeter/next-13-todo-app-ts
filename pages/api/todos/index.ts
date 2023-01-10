@@ -1,5 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 import todoHandler from "backend/handlers/TodoHandler";
+import Authentication from "backend/middleware/Authentication";
 import { NextApiRequest, NextApiResponse } from "next";
 
 const prisma = new PrismaClient()
