@@ -1,12 +1,12 @@
-### Features
+## Features
 - Built in authentication and authorization
 - The possibility to delete todos
 - "Deleted" todos by user are marked as "Temporarily deleted" ar first
 
-### Overview
+## Overview
 This project was created by me to experiment with the beta **app** directory in the new NextJS version 13.
 
-### How to use
+## How to use
 - Install the application by running the following command right after you cloned it onto your file system:
 
 ```bash
